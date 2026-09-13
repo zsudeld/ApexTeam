@@ -1,0 +1,13 @@
+---
+- name: NorthLine client software deployment
+  hosts: linux_clients
+  become: true
+  tasks:
+    - name: Install client utilities from the Ubuntu repository
+      ansible.builtin.apt:
+        name:
+          - tree
+          - curl
+        state: present
+        update_cache: true
+        cache_valid_time: 3600
